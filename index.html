@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Slide Show with Cross Fade</title>
+
+    <link href="styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="content">
+        <img src="slides/image1.jpg" alt="slideshow image" id="myimage">
+    </div>
+
+    <p id="links"><a href="#" id="previous">previous</a><a href="#" id="next">next</a></p>
+    <script>
+    const myphotos= ['image1.jpg','image2.jpg','image3.jpg','image4.jpg','image5.jpg'];
+    let currentImage=0;
+    var container= document.getElementById('content');
+    var nextBtn= document.getElementById('next');
+    var prevBtn= document.getElementById('previous');
+    nextBtn.addEventListener('click', function (e){
+        e.preventDefault();
+        if(currentImage==4){currentImage=-1;}
+            currentImage++;
+            var newSlide= document.createElement('img');
+            newSlide.src=`slides/${myphotos[currentImage]}`;
+            newSlide.className='fadeining';
+            container.appendChild(newSlide);
+    });
+    prevBtn.addEventListener('click', function (e){
+        e.preventDefault();
+        if(currentImage==0){currentImage=5;}
+            currentImage--;
+            var newSlide= document.createElement('img');
+            newSlide.src=`slides/${myphotos[currentImage]}`;
+            newSlide.className='fadeining';
+            container.appendChild(newSlide);
+    });
+    </script>
+
+</body>
+
+</html>
